@@ -36,15 +36,15 @@
                   <Label text="Resolution" GridPane.rowIndex="2" />
                   <Label text="SLR" GridPane.rowIndex="3" />
                   <Label text="Price" GridPane.rowIndex="4" />
-                  <ComboBox prefHeight="26.0" prefWidth="133.0" promptText="Select Brand" GridPane.columnIndex="1" />
-                  <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                  <CheckBox mnemonicParsing="false" text="CheckBox" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                  <TextField GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <ComboBox fx:id="brandComboBox" prefHeight="26.0" prefWidth="133.0" promptText="Select Brand" GridPane.columnIndex="1" />
+                  <TextField fx:id="modelTextField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <TextField fx:id="resolutionTextField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <CheckBox fx:id="slrCheckBox" mnemonicParsing="false" text="CheckBox" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <TextField fx:id="priceTextField" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                </children>
             </GridPane>
-            <Button mnemonicParsing="false" text="Submit" />
-            <Label text="Label" />
+            <Button mnemonicParsing="false" onAction="#createCamera" text="Submit" />
+            <Label fx:id="msgLabel" text="Label" />
          </children>
       </VBox>
    </children>
