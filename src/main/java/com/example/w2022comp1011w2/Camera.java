@@ -102,3 +102,5 @@ public class Camera {
         return String.format("%s-%s,%dMp, $%.2f",make,model,resolution,price);
     }
 }
+
+//stack is a data structure just like arraylist
