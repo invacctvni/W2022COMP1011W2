@@ -7,7 +7,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.text.Text;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.net.URL;
+import java.util.Formatter;
 import java.util.ResourceBundle;
 
 //implemenets initializable interface call initialize method
@@ -78,7 +81,13 @@ public class CreateCameraViewController implements Initializable {
         });
 
         //update the price text field s.t. it will accept a double.
-
+        priceTextField.textProperty().addListener((obs,oldValue,newValue)->{
+            try{
+                Double.parseDouble(newValue);
+            }catch (Exception e) {
+                priceTextField.setText(oldValue);
+            }
+        });
     }
 
     @FXML
@@ -99,10 +108,21 @@ public class CreateCameraViewController implements Initializable {
             if (res != -1 && price != -1) {
                 msgLabel.setText("Resolution numbers must numbers only");
             }
-            Camera newCamera = new Camera(make, model, res, slr, price);
-            //visible again.
+            try {
+                Camera newCamera = new Camera(make, model, res, slr, price);
+                Formatter formatter = new Formatter(new File("camera.txt"));
+                formatter.format("new camera: %s\n",newCamera);
+                formatter.close();
+                //visible again.
 //            msgLabel.setVisible(true);
-            msgLabel.setText(newCamera.toString());
+            }catch(IllegalArgumentException e)
+            {
+                msgLabel.setText(e.getMessage());
+            }catch (FileNotFoundException e)
+            {
+                msgLabel.setText("error writting to file "+e.getMessage());
+            }
+//                msgLabel.setText(newCamera.toString());
 
     }
 }

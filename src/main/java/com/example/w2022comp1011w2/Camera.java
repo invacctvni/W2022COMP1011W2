@@ -10,6 +10,7 @@ import java.util.List;
 //This is our model class. It stores the info we could typically track about a camera.
 
 public class Camera {
+    private int cameraID;
     private int resolution;
     private String make, model;
     private boolean slr;
@@ -21,6 +22,26 @@ public class Camera {
         setModel(model);
         setSlr(slr);
         setPrice(price);
+        cameraID = -1;
+    }
+
+    /**
+     * This is an overloaded constructor
+     */
+    public Camera(int cameraID, String make, String model, int resolution, boolean slr, double price) {
+        this (make, model, resolution, slr,price);
+        setCameraID(cameraID);
+    }
+
+    public int getCameraID() {
+        return cameraID;
+    }
+
+    public void setCameraID(int cameraID) {
+        if (cameraID <=0)
+            throw new IllegalArgumentException("CameraId must be greater than 0");
+        else
+        this.cameraID = cameraID;
     }
 
     public int getResolution() {
