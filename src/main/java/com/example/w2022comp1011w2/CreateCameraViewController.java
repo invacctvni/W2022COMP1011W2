@@ -37,6 +37,7 @@ public class CreateCameraViewController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 //        msgLabel.setVisible(false);
         msgLabel.setText("");
+        //add all manufacturers
         brandComboBox.getItems().addAll(Camera.getManufacturers());
 
         //configure the spinner to only accept realistic camera resolutions.
@@ -46,18 +47,21 @@ public class CreateCameraViewController implements Initializable {
         SpinnerValueFactory<Integer> spinnerValueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(5,100,20,5);
         //5,100,20,5 v
         resolutionSpinner.setValueFactory(spinnerValueFactory);
-        TextField spinnerTextField = resolutionSpinner.getEditor();
-        resolutionSpinner.setEditable(true);
-//      Create a customer changeListener class wasn't efficient - extra files and didn't allow to access
-//        JS objects private in the controller.
-//        spinnerTextField.textProperty().addListener(new SpinnerChangeListener());
-        //we can create an annoymous inner class.
 
+        resolutionSpinner.setEditable(true);
+
+//        grab the text field out of the spinner for us.
+        TextField spinnerTextField = resolutionSpinner.getEditor();
+        //?
+
+//      Create a customer changeListener class wasn't efficient - extra files and didn't allow accessing JS objects that are private in the controller.
+//        spinnerTextField.textProperty().addListener(new SpinnerChangeListener());
+//        we can create an anonymous inner class.
 
 //        spinnerTextField.textProperty().addListener(new ChangeListener<String>() {
 //            @Override
 //            public void changed(ObservableValue<? extends String> observableValue, String oldValue, String newValue) {
-//
+//                msgLabel.setText("");
 //                try {
 //                    Integer.parseInt(newValue);
 //                    msgLabel.setText("");
@@ -69,10 +73,10 @@ public class CreateCameraViewController implements Initializable {
 ////                msgLabel.setText(String.format("Old value: %s new value: %s",oldValue, newValue));
 //            }
 //        });
-
         //Let's use a lambda expression. ex1
-        spinnerTextField.textProperty().addListener( (obs, oldValue, newValue) -> {
+        spinnerTextField.textProperty().addListener((obs, oldValue, newValue) -> {
             try{
+                //if integer it is fine.
                 Integer.parseInt(newValue);
             }
             catch(Exception e) {
@@ -92,8 +96,6 @@ public class CreateCameraViewController implements Initializable {
 
     @FXML
     private void createCamera() {
-
-
             String make = brandComboBox.getSelectionModel().getSelectedItem();
             String model = modelTextField.getText();
             boolean slr = slrCheckBox.isSelected(); //if selected return true other false
@@ -101,18 +103,19 @@ public class CreateCameraViewController implements Initializable {
             double price = -1;
             try {
             res = resolutionSpinner.getValue();
-            price=Double.parseDouble(priceTextField.getText());
+            price =Double.parseDouble(priceTextField.getText());
         }catch(Exception e) {
             msgLabel.setText("Resolution must be a whole number");
         }
             if (res != -1 && price != -1) {
-                msgLabel.setText("Resolution numbers must numbers only");
-            }
+
             try {
                 Camera newCamera = new Camera(make, model, res, slr, price);
+                //once get valid camera, works a lot like printing to a file. Writting to the files system
                 Formatter formatter = new Formatter(new File("camera.txt"));
                 formatter.format("new camera: %s\n",newCamera);
                 formatter.close();
+                msgLabel.setText(newCamera.toString());
                 //visible again.
 //            msgLabel.setVisible(true);
             }catch(IllegalArgumentException e)
@@ -123,6 +126,6 @@ public class CreateCameraViewController implements Initializable {
                 msgLabel.setText("error writting to file "+e.getMessage());
             }
 //                msgLabel.setText(newCamera.toString());
-
+            }
     }
 }

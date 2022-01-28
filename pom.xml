@@ -38,7 +38,7 @@
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
-
+<!--        //add mysql dependency. -->
         <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
         <dependency>
             <groupId>mysql</groupId>

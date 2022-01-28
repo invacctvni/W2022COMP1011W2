@@ -10,7 +10,7 @@ import java.util.List;
 //This is our model class. It stores the info we could typically track about a camera.
 
 public class Camera {
-    private int cameraID;
+    private int cameraID; //initialize the ID variable.
     private int resolution;
     private String make, model;
     private boolean slr;
@@ -22,17 +22,18 @@ public class Camera {
         setModel(model);
         setSlr(slr);
         setPrice(price);
-        cameraID = -1;
+        cameraID = -1; //initialize the ID. Set it later.
     }
 
+
     /**
-     * This is an overloaded constructor
+     * This is an overloaded constructor which has the same name with different arguments. If receiving camera ID, I call this.
      */
     public Camera(int cameraID, String make, String model, int resolution, boolean slr, double price) {
         this (make, model, resolution, slr,price);
         setCameraID(cameraID);
     }
-
+//    generate getter and setters
     public int getCameraID() {
         return cameraID;
     }
