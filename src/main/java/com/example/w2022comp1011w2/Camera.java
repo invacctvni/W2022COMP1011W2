@@ -15,6 +15,8 @@ public class Camera {
     private String make, model;
     private boolean slr;
     private double price;
+    //add field units sold
+    private int unitsSold;
 
     public Camera(String make, String model, int res, boolean slr, double price) {
         setResolution(res);
@@ -26,6 +28,7 @@ public class Camera {
     }
 
 
+
     /**
      * This is an overloaded constructor which has the same name with different arguments. If receiving camera ID, I call this.
      */
@@ -33,7 +36,28 @@ public class Camera {
         this (make, model, resolution, slr,price);
         setCameraID(cameraID);
     }
-//    generate getter and setters
+
+    /**
+     * This is an overloaded constructor which has the same name with different arguments. If receiving camera ID, I call this.
+     */
+    public Camera(int cameraID, String make, String model, int resolution, boolean slr, double price, int unitsSold) {
+        this (make, model, resolution, slr,price);
+        setUnitsSold(unitsSold);
+        setCameraID(cameraID);
+    }
+
+    public int getUnitsSold() {
+        return unitsSold;
+    }
+
+    public void setUnitsSold(int unitsSold) {
+        if (unitsSold >=0)
+        this.unitsSold = unitsSold;
+        else
+            throw new IllegalArgumentException("Units sold must be >=0");
+    }
+
+    //    generate getter and setters
     public int getCameraID() {
         return cameraID;
     }
