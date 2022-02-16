@@ -13,7 +13,7 @@ public class Main extends Application {
     public void start(Stage stage) throws IOException {
 //        change fxml loader object
 //        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("create-camera-view.fxml"));
-         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("camera-tableview.fxml"));
+         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("camera-chart-view.fxml"));
 //        scene is what we put on stage
         Scene scene = new Scene(fxmlLoader.load());
 //        stage is more like a window

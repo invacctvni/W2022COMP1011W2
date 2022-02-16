@@ -1,8 +1,11 @@
 package com.example.w2022comp1011w2;
 
+import javafx.scene.chart.XYChart;
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 
 //Update DB Utility Class.
 public class DBUtility {
@@ -88,5 +91,19 @@ public class DBUtility {
             e.printStackTrace();
         }
         return cameras;
+    }
+
+    public static XYChart.Series<String, Integer> getUnitsSold() {
+        XYChart.Series<String,Integer> unitsSold = new XYChart.Series<>();
+        //get a list of cameras from db
+        ArrayList<Camera> cameras = getCamerasFromDB();
+        //loop over each camera and add it to chart series
+//        unitsSold.getData().add(new XYChart.Data<>("Jaret's cool camera", 20));
+//        unitsSold.getData().add(new XYChart.Data<>("Matheson's cool camera", 30));
+        for (Camera camera : cameras) {
+            unitsSold.getData().add(new XYChart.Data<>(camera.getMakeAndModel(),camera.getUnitsSold()));
+            System.out.println(camera.toString());
+        }
+        return unitsSold;
     }
 }

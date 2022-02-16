@@ -6,11 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="W2022COMP1011W2" />
+        <module name="ASSIGNMENT1-GC200477892" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="W2022COMP1011W2" target="17" />
+      <module name="ASSIGNMENT1-GC200477892" target="17" />
     </bytecodeTargetLevel>
   </component>
 </project>

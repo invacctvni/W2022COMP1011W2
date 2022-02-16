@@ -147,6 +147,11 @@ public class Camera {
     public String toString() {
         return String.format("%s-%s,%dMp, $%.2f",make,model,resolution,price);
     }
+
+    public String getMakeAndModel()
+    {
+        return make+"-"+model;
+    }
 }
 
 //stack is a data structure just like arraylist
