@@ -1,5 +1,6 @@
 package com.example.w2022comp1011w2;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.BarChart;
@@ -7,6 +8,7 @@ import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 
+import java.io.IOException;
 import java.net.URL;
 import java.security.SecureRandom;
 import java.util.ResourceBundle;
@@ -33,6 +35,21 @@ public class CameraChartViewController implements Initializable {
         numberAxis.setLabel("units sold");
         categoryAxis.setLabel("Camera Make and Models");
     }
+
+    /**
+     * This method will load the TableView scene when called
+     */
+    @FXML
+    private void loadTableView(ActionEvent event) throws IOException
+    {
+        SceneChanger.changeScenes(event, "camera-tableview.fxml");
+    }
+
+
+
+    /**
+     *  This is an example of adding a second dataset, not connected to GUI
+     */
     @FXML
             private void addData()
     {
