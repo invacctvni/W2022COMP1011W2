@@ -95,6 +95,7 @@ public class DBUtility {
 
     public static XYChart.Series<String, Integer> getUnitsSold() {
         XYChart.Series<String,Integer> unitsSold = new XYChart.Series<>();
+        unitsSold.setName("2022");
         //get a list of cameras from db
         ArrayList<Camera> cameras = getCamerasFromDB();
         //loop over each camera and add it to chart series
